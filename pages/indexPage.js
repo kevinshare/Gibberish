@@ -9,8 +9,16 @@ import StepLabel from '@material-ui/core/StepLabel';
 import StepContent from '@material-ui/core/StepContent';
 import Button from '@material-ui/core/Button';
 import RaisedDiv from '@material-ui/core/Paper';
-import StepperComponent from '../Components/Stepper';
-import SVG from '../Components/SVG';
+import StepperComponent from '../components/Stepper';
+import SVG from '../components/SVG';
+
+const style = {
+  borderRadius: 10,
+  maxWidth: '50%',
+  marginLeft: 'auto',
+  marginRight: 'auto',
+}
+
 
 function getSteps() {
   return [
@@ -46,7 +54,12 @@ export default class extends Component {
     const steps = getSteps();
     return (
       <div>
-        <RaisedDiv elevation={2}>
+        <RaisedDiv 
+          elevation={2}
+          rounded={'10px'}
+          style={style}
+
+        >
 
           {steps.map((step, index) => {
             return (
