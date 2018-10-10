@@ -1,30 +1,30 @@
 /*eslint-disable*/
 import { Component } from 'react';
-import Router from 'next/router';
-import Link from 'next/link';
-import Head from 'next/head';
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
 import StepContent from '@material-ui/core/StepContent';
 import Button from '@material-ui/core/Button';
 import RaisedDiv from '@material-ui/core/Paper';
-import StepperComponent from '../components/Stepper';
-import SVG from '../components/SVG';
+import StepperComponent from '../Components/Stepper';
+import SVG from '../Components/SVG';
+import ZoneComponent from '../Components/ZoneComponent';
 
 const style = {
   borderRadius: 10,
-  maxWidth: '50%',
+  maxWidth: '45%',
   marginLeft: 'auto',
   marginRight: 'auto',
 }
-
+const wrapStyle = {
+  marginTop: '8%',
+}
 
 function getSteps() {
   return [
     {
       label: 'Select, then upload your Rules & Test Files', 
-      content: '      ', 
+      content: <ZoneComponent />,
       svg: <SVG type={"upload"}/>,
       buttonText: 'UPLOAD FILES',
     },
@@ -41,29 +41,24 @@ function getSteps() {
   ];
 }
 
-
 export default class extends Component {
   constructor(props) {
     super(props);
     this.state = {
     };
-
   }
-
   render() {
     const steps = getSteps();
     return (
-      <div>
+      <div className="rulesWrapper" style={wrapStyle}>
         <RaisedDiv 
           elevation={2}
           rounded={'10px'}
           style={style}
-
         >
-
           {steps.map((step, index) => {
             return (
-              <StepperComponent 
+              <StepperComponent
                 index={index} 
                 svg={step.svg} 
                 label={step.label} 
@@ -73,12 +68,6 @@ export default class extends Component {
             )
           })}
         </RaisedDiv>
-          <style jsx>{`
-            .1 {
-              width: 90%;
-              background-color: black;
-            }
-          `}</style>
       </div>
     );
   }
