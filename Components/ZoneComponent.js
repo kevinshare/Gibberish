@@ -32,7 +32,7 @@ const styles = theme => ({
 });
 
 const style = {
-  display: 'flex',
+  flexBasis: '45%',
   backgroundColor: 'rgba(225, 225, 225, 0.5)',
   textAlign: 'center',
   alignContent: 'center',
@@ -54,44 +54,41 @@ const styleB = {
   border: 'dotted 1px',
   borderRadius: '8px',
   minHeight: '50px',
+  marginTop: '2%',
 }
 const DropZoneContainer = (props) => {
   const { classes } = props;
   return (
-      <div className={classes.root}>
-        <Grid container spacing={16}>
-          <Grid item xs={12}>
-            <Grid container >
-                <Grid item style={{flexBasis: '45%'}}>
-                  <div style={style} className={classes.topbox} id="topBoxes"> 
-                    <Typography variant="body1">
-                      Decision Table
-                    </Typography>
-                  </div>
-                </Grid>
-                <Grid item className={classes.or} style={{flexBasis: '10%'}}>
-                  <Typography variant="body1">
-                    OR
-                  </Typography>
-                </Grid>
-                <Grid item style={{flexBasis: '45%'}}>
-                  <div style={style} className={classes.topbox}  id="topBoxes">
-                    <Typography variant="body1">
-                      Business Template
-                    </Typography>
-                  </div> 
-                </Grid>
-            </Grid>
+    <Grid container direction="column">
+      <Grid item>
+        <Grid container direction="row" >
+          <Grid item style={style} className={classes.topbox}>
+            <Typography variant="body1">
+              Decision Table
+            </Typography>
           </Grid>
-          <Grid item xs={12}>
-            <div style={styleB} className={classes.bottomBox}  id="bottomBox">
-              <Typography variant="body1">
-                Cucumber Feature File
-              </Typography>
-            </div> 
+          <Grid item className={classes.or} style={{flexBasis: '10%'}}>
+            <Typography variant="body1">
+              OR
+            </Typography>
+          </Grid>
+          <Grid item style={style} className={classes.topbox}>
+            <Typography variant="body1">
+              Business Template
+            </Typography>
           </Grid>
         </Grid>
-      </div>
+      </Grid>
+      <Grid item>
+        <Grid container direction="row" style={{paddingBottom: '10%'}}>
+          <Grid item xs={12} style={styleB} className={classes.bottomBox}>
+            <Typography variant="body1">
+              Cucumber Feature File
+            </Typography>
+          </Grid>
+        </Grid>
+      </Grid>
+    </Grid>
   );
 }
 

@@ -19,10 +19,9 @@ const styleLabel = {
   borderLeft: '90px',
 }
 const stepperStyle = {
-  marginBottom: '-60px',
-  marginTop: '-37px',
+  paddingTop: 0,
+  paddingBottom: 0,
   borderLeft: 'rgba(225, 225, 225, 0.3)',
-  maxHeight: '70%',
 }
 const contentStyle ={
   paddingBottom: '1%',
