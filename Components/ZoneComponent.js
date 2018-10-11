@@ -1,7 +1,7 @@
 /*eslint-disable*/
 import { withStyles } from '@material-ui/core/styles';
 import {Paper, Grid, Typography} from '@material-ui/core/';
-
+import DropZone from './DropZone';
 const styles = theme => ({
   root: {
     flexGrow: 1,
@@ -10,13 +10,11 @@ const styles = theme => ({
     display: 'flex',
     alignContent: 'center',
     justifyContent: 'center',
-    textAlign: 'center',
   },
   bottomBox: {
     display: 'flex',
     alignContent: 'center',
     justifyContent: 'center',
-    textAlign: 'center',
     fontSize: '12px',
     fontWeight: '100',
   },
@@ -24,7 +22,6 @@ const styles = theme => ({
     display: 'flex',
     alignContent: 'center',
     justifyContent: 'center',
-    textAlign: 'center',
     alignItems: 'center',
     fontSize: '15px',
     fontWeight: '100',
@@ -32,9 +29,9 @@ const styles = theme => ({
 });
 
 const style = {
+  display: 'flex',
   flexBasis: '45%',
   backgroundColor: 'rgba(225, 225, 225, 0.5)',
-  textAlign: 'center',
   alignContent: 'center',
   alignItems: 'center',
   justifyContent: 'center',
@@ -47,7 +44,6 @@ const style = {
 const styleB = {
   display: 'flex',
   backgroundColor: 'rgba(225, 225, 225, 0.5)',
-  textAlign: 'center',
   alignContent: 'center',
   alignItems: 'center',
   justifyContent: 'center',
@@ -63,28 +59,22 @@ const DropZoneContainer = (props) => {
       <Grid item>
         <Grid container direction="row" >
           <Grid item style={style} className={classes.topbox}>
-            <Typography variant="body1">
-              Decision Table
-            </Typography>
+            <DropZone title={"Decision Table"} />
           </Grid>
           <Grid item className={classes.or} style={{flexBasis: '10%'}}>
-            <Typography variant="body1">
+            <Typography align="center" variant="body1">
               OR
             </Typography>
           </Grid>
           <Grid item style={style} className={classes.topbox}>
-            <Typography variant="body1">
-              Business Template
-            </Typography>
+            <DropZone title={"Business Template"} />
           </Grid>
         </Grid>
       </Grid>
       <Grid item>
         <Grid container direction="row" style={{paddingBottom: '10%'}}>
           <Grid item xs={12} style={styleB} className={classes.bottomBox}>
-            <Typography variant="body1">
-              Cucumber Feature File
-            </Typography>
+            <DropZone title={"Cucumber Feature File"} />
           </Grid>
         </Grid>
       </Grid>
