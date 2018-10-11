@@ -18,17 +18,21 @@ const styleLabel = {
   minHeight: '70px',
   borderLeft: '90px',
 }
+
 const stepperStyle = {
   paddingTop: 0,
   paddingBottom: 0,
   borderLeft: 'rgba(225, 225, 225, 0.3)',
 }
+
 const contentStyle ={
   paddingBottom: '1%',
 }
+
 const svgStyle = {
   marginLeft: '10%',
 }
+
 const StepperComponent = (props) => {
   return (
     <MuiThemeProvider theme={theme}>

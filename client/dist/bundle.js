@@ -11042,19 +11042,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /*eslint-disable*/
 
 
-var style = {}
-// borderRadius: 10,
-// minWidth: '60%',
-// maxWidth: '70%',
-// marginLeft: 'auto',
-// marginRight: 'auto',
-// marginTop: '8%',
-
-// const wrapStyle = {
-
-// }
-
-;function getSteps() {
+function getSteps() {
   return [{
     label: 'Select, then upload your Rules & Test Files',
     content: React.createElement(_ZoneComponent2.default, null),
@@ -11112,7 +11100,7 @@ var _class = function (_Component) {
                 _Paper2.default,
                 {
                   elevation: 2,
-                  rounded: '10px'
+                  rounded: 10
                 },
                 steps.map(function (step, index) {
                   return React.createElement(_Stepper4.default, {
@@ -19867,17 +19855,21 @@ var styleLabel = {
   minHeight: '70px',
   borderLeft: '90px'
 };
+
 var stepperStyle = {
   paddingTop: 0,
   paddingBottom: 0,
   borderLeft: 'rgba(225, 225, 225, 0.3)'
 };
+
 var contentStyle = {
   paddingBottom: '1%'
 };
+
 var svgStyle = {
   marginLeft: '10%'
 };
+
 var StepperComponent = function StepperComponent(props) {
   return React.createElement(
     _styles.MuiThemeProvider,
@@ -49944,12 +49936,17 @@ var style = {
 
 var headerSection = {
   borderBottom: 'solid 0.8px rgba(225, 225, 225, 0.8)',
-  minHeight: '5%'
+  padding: '2%'
 };
 
 var linkStyle = {
   fontSize: '10px',
   marginLeft: '10%'
+};
+
+var headerItem = {
+  minHeight: '5%',
+  maxHeight: '6%'
 };
 
 var DownloadComponent = function DownloadComponent(props) {
@@ -49962,64 +49959,56 @@ var DownloadComponent = function DownloadComponent(props) {
     },
     React.createElement(
       _core.Grid,
-      { container: true, spacing: 16 },
+      { container: true, direction: 'column', style: { maxHeight: '25%', minHeight: '20%' } },
       React.createElement(
         _core.Grid,
-        { item: true, xs: 12 },
+        { item: true },
         React.createElement(
           _core.Grid,
-          { style: headerSection, justify: 'center', alignItems: 'center', container: true },
+          { style: headerSection, container: true, direction: 'row' },
           React.createElement(
             _core.Grid,
-            { item: true, xs: 2, style: { flexBasis: '25%' } },
+            { item: true, style: { headerItem: headerItem } },
             React.createElement(
-              'div',
-              { className: 'headerSVG' },
+              _core.Typography,
+              { variant: 'body1' },
+              React.createElement(_SVG2.default, { type: "download" }),
+              ' Current Deployed Versions'
+            )
+          )
+        )
+      ),
+      React.createElement(
+        _core.Grid,
+        { item: true },
+        React.createElement(
+          _core.Grid,
+          { container: true, direction: 'row' },
+          React.createElement(
+            _core.Grid,
+            { item: true, xs: 12, style: { paddingBottom: '4%' } },
+            React.createElement(
+              _core.Typography,
+              { component: 'p' },
               React.createElement(
-                _core.Typography,
-                null,
-                React.createElement(_SVG2.default, { type: "download" })
+                'a',
+                { style: linkStyle, href: '#' },
+                'Rules Download'
               )
             )
           ),
           React.createElement(
             _core.Grid,
-            { item: true, xs: 8, style: { flexBasis: '75%', marginLeft: '-8%' } },
+            { item: true, xs: 12 },
             React.createElement(
-              'div',
-              { className: 'headerTitle' },
+              _core.Typography,
+              { component: 'p' },
               React.createElement(
-                _core.Typography,
-                null,
-                'Current Deployed Versions'
+                'a',
+                { style: linkStyle, href: '#' },
+                'Tests Download'
               )
             )
-          )
-        )
-      ),
-      React.createElement(
-        _core.Grid,
-        { item: true, xs: 12 },
-        React.createElement(
-          _core.Typography,
-          { component: 'p' },
-          React.createElement(
-            'a',
-            { style: linkStyle, href: '#' },
-            'Rules Download'
-          )
-        )
-      ),
-      React.createElement(
-        _core.Grid,
-        { item: true, xs: 12 },
-        React.createElement(
-          _core.Typography,
-          { component: 'p' },
-          React.createElement(
-            'a',
-            { style: linkStyle, href: '#' },
-            'Tests Download'
           )
         )
       )

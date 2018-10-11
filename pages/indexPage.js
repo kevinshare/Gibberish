@@ -12,18 +12,6 @@ import SVG from '../Components/SVG';
 import ZoneComponent from '../Components/ZoneComponent';
 import DownloadComponent from '../Components/DownloadComponent';
 
-const style = {
-  // borderRadius: 10,
-  // minWidth: '60%',
-  // maxWidth: '70%',
-  // marginLeft: 'auto',
-  // marginRight: 'auto',
-  // marginTop: '8%',
-}
-// const wrapStyle = {
-  
-// }
-
 function getSteps() {
   return [
     {
@@ -65,7 +53,7 @@ export default class extends Component {
               <Grid item style={{width: '100%', height: '100%'}}>
                 <RaisedDiv 
                   elevation={2}
-                  rounded={'10px'}
+                  rounded={10}
                 >
                   {steps.map((step, index) => {
                     return (
