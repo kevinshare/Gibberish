@@ -21,7 +21,7 @@ const headerSection = {
 }
 
 const linkStyle = {
-  fontSize: '10px',
+  fontSize: '12px',
   marginLeft: '10%',
 }
 

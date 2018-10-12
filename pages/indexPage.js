@@ -11,6 +11,7 @@ import StepperComponent from '../Components/Stepper';
 import SVG from '../Components/SVG';
 import ZoneComponent from '../Components/ZoneComponent';
 import DownloadComponent from '../Components/DownloadComponent';
+import LogPopUp from '../Components/LogPopUp';
 
 function getSteps() {
   return [
@@ -19,16 +20,19 @@ function getSteps() {
       content: <ZoneComponent />,
       svg: <SVG type={"upload"}/>,
       buttonText: 'UPLOAD FILES',
+      progressText: ['business-auth-match-template.xlsx', 'Testing Auths v5.feature']
     },
     {
       label: 'Run your Tests', 
       svg: <SVG type={"redo-alt"}/>,
       buttonText: 'RUN TESTS',
+      progressText: ['4 out of 4 Tests passed!', 'Rules are ready for deployment.']
     },
     {
       label: 'Build and deploy your Rules!', 
       svg: <SVG type={"rocket"}/>,
       buttonText: 'DEPLOY',
+      progressText: ['Deployment succesful!']
     },
   ];
 }
@@ -37,10 +41,30 @@ export default class extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      modalOpen: false,
+      testPass: false,
     };
+
+  }
+
+  handleLinkClick = (currentButtonLabel, e) => {
+    e.preventDefault();
+    if (currentButtonLabel === 'Build and deploy your Rules!') {
+      this.setState({
+        modalOpen: !this.state.modalOpen,
+        log: 'THIS IS YOUR LOG THIS IS YOUR LOG THIS IS YOUR LOG THIS IS YOUR LOG THIS IS YOUR LOG THIS IS YOUR LOG THIS IS YOUR LOG THIS IS YOUR LOG THIS IS YOUR LOG THIS IS YOUR LOG THIS IS YOUR LOG THIS IS YOUR LOG THIS IS YOUR LOG THIS IS YOUR LOG THIS IS YOUR LOG THIS IS YOUR LOG THIS IS YOUR LOG THIS IS YOUR LOG THIS IS YOUR LOG THIS IS YOUR LOG THIS IS YOUR LOG THIS IS YOUR LOG THIS IS YOUR LOG THIS IS YOUR LOG THIS IS YOUR LOG THIS IS YOUR LOG THIS IS YOUR LOG THIS IS YOUR LOG THIS IS YOUR LOG THIS IS YOUR LOG THIS IS YOUR LOG THIS IS YOUR LOG THIS IS YOUR LOG THIS IS YOUR LOG THIS IS YOUR LOG THIS IS YOUR LOG THIS IS YOUR LOG THIS IS YOUR LOG THIS IS YOUR LOG THIS IS YOUR LOG THIS IS YOUR LOG THIS IS YOUR LOG THIS IS YOUR LOG THIS IS YOUR LOG THIS IS YOUR LOG THIS IS YOUR LOG THIS IS YOUR LOG THIS IS YOUR LOG ',
+      })
+    } 
   }
   render() {
     const steps = getSteps();
+    if (this.state.testPass === false) {
+      steps[1]["progressText"][1] = 
+        <a 
+          onClick={(e) => this.handleLinkClick('Build and deploy your Rules!', e)} 
+          href="javascript:void(0)">View Test Log
+        </a>
+    }
     return (
       <Grid container direction="row">
         <Grid item xs={3}>
@@ -58,11 +82,12 @@ export default class extends Component {
                   {steps.map((step, index) => {
                     return (
                       <StepperComponent
-                        index={index} 
+                        index={index}
                         svg={step.svg} 
                         label={step.label} 
                         content={step.content}
                         buttonText={step.buttonText}
+                        progressText={step.progressText}
                       />
                     )
                   })}
@@ -70,6 +95,7 @@ export default class extends Component {
               </Grid>
             </Grid>
           </Grid>
+          <LogPopUp open={this.state.modalOpen} log={this.state.log} handler={this.handleLinkClick} />
       </Grid>
     );
   }

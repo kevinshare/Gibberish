@@ -59,7 +59,10 @@ const DropZoneContainer = (props) => {
       <Grid item>
         <Grid container direction="row" >
           <Grid item style={style} className={classes.topbox}>
-            <DropZone title={"Decision Table"} />
+            <DropZone 
+              title={'Decision Table'} 
+              description={'Drag and drop or click here'}
+            />
           </Grid>
           <Grid item className={classes.or} style={{flexBasis: '10%'}}>
             <Typography align="center" variant="body1">
@@ -67,14 +70,20 @@ const DropZoneContainer = (props) => {
             </Typography>
           </Grid>
           <Grid item style={style} className={classes.topbox}>
-            <DropZone title={"Business Template"} />
+            <DropZone 
+              title={'Business Template'}
+              description={'Drag and drop or click here'} 
+            />
           </Grid>
         </Grid>
       </Grid>
       <Grid item>
         <Grid container direction="row" style={{paddingBottom: '10%'}}>
           <Grid item xs={12} style={styleB} className={classes.bottomBox}>
-            <DropZone title={"Cucumber Feature File"} />
+            <DropZone 
+              title={'Cucumber Feature File'} 
+              description={'Drag and drop or click here'}
+            />
           </Grid>
         </Grid>
       </Grid>

@@ -4,13 +4,14 @@ import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
 import StepContent from '@material-ui/core/StepContent';
 import Button from '@material-ui/core/Button';
+import {Grid, Typography} from '@material-ui/core/';
 import { withStyles } from '@material-ui/core/styles';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
-
+import ProgressTextArea from './ProgressTextArea';
 const theme = createMuiTheme({
   palette: {
     primary: { main: '#19BED8' },
-    secondary: { main: '#19BED8' },
+    secondary: { main: 'rgba(225, 225, 225, 0.3)' },
   },
 });
 
@@ -52,11 +53,11 @@ const StepperComponent = (props) => {
               : 
               props.content
             }
-            <div className="2">
-              <div>
+            <Grid container direction="row">
+              <Grid item style={{ flexBasis: '45%' }}>
                 <Button
                   style={{
-                    width: '30%', 
+                    width: '50%', 
                     marginTop: '10px', 
                     color: 'white',
                     fontSize: '10px',
@@ -74,8 +75,17 @@ const StepperComponent = (props) => {
                     {props.svg}
                   </div>
                 </Button>
-              </div>
-            </div>
+              </Grid>
+              <Grid item style={{ flexBasis: '35%' }}>
+                <Grid container direction="row">
+                  {props.progressText.map(text => 
+                    <Grid item xs={12}>
+                      <ProgressTextArea progressText={text}/>
+                    </Grid>
+                  )}
+                </Grid>
+              </Grid>
+            </Grid>
           </StepContent>
         </Step>
         <Step hidden={true} completed={true} key={2}/>          
