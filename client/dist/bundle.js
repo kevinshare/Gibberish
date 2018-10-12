@@ -50031,7 +50031,8 @@ var DropZoneComponent = function (_Component) {
     _this.handleDelete = function () {
       localStorage.removeItem('local-' + _this.state.file);
       _this.setState({
-        file: null
+        file: null,
+        disable: false
       });
     };
 

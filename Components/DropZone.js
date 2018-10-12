@@ -42,6 +42,7 @@ export default class DropZoneComponent extends Component {
     localStorage.removeItem(`local-${this.state.file}`);
     this.setState({
       file: null,
+      disable: false,
     })
   }
 
