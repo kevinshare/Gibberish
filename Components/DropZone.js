@@ -20,6 +20,7 @@ const fileAddedStyle = {
   color: '#19BED8', 
 }
 
+
 export default class DropZoneComponent extends Component {
   constructor(props) {
     super(props);
@@ -29,6 +30,7 @@ export default class DropZoneComponent extends Component {
     }
   }
   onDrop = (file) => {
+    this.props.returnDisableState(this.props.disableLabel);
     this.setState({
       file: file,
       disable: true,
@@ -39,6 +41,7 @@ export default class DropZoneComponent extends Component {
     })
   }
   handleDelete = () => {
+    this.props.returnDisableState(this.props.disableLabel);
     localStorage.removeItem(`local-${this.state.file}`);
     this.setState({
       file: null,

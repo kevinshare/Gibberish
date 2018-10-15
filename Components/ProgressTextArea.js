@@ -5,16 +5,26 @@ import SVG from './SVG';
 import {Grid, Typography} from '@material-ui/core/';
 
 const styleProgress = {
-  padding: '2%',
+  paddingTop: 6,
 }
+
+const styleSVG = {
+  paddingTop: 8,
+}
+
 
 
 const TextArea = (props) => (
   <Grid container direction="row">
-    <Grid item style={styleProgress}>
-        <Typography variant="body1">
-          <SVG type={"check-circle"} /> {props.progressText}
-        </Typography>
+    <Grid item xs={2} style={styleSVG}>
+      <Typography variant="body1">
+        <SVG type={"check-circle"} />
+      </Typography>
+    </Grid>
+    <Grid item xs={10} style={styleProgress}> 
+      <Typography variant="body1">
+        {props.progressText}
+      </Typography>
     </Grid>
   </Grid>
 );

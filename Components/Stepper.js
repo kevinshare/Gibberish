@@ -8,26 +8,31 @@ import {Grid, Typography} from '@material-ui/core/';
 import { withStyles } from '@material-ui/core/styles';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import ProgressTextArea from './ProgressTextArea';
-const theme = createMuiTheme({
+const styles = {
   palette: {
-    primary: { main: '#19BED8' },
-    secondary: { main: 'rgba(225, 225, 225, 0.3)' },
+    primary: '#19BED8',
+    secondary: '#19BED8',
   },
-});
+  raisedButton: {
+    primary: '#19BED8',
+  }
+};
 
 const styleLabel = {
   minHeight: '70px',
   borderLeft: '90px',
+  color: 'white'
 }
 
 const stepperStyle = {
   paddingTop: 0,
-  paddingBottom: 0,
+  paddingBottom: 10,
   borderLeft: 'rgba(225, 225, 225, 0.3)',
 }
 
 const contentStyle ={
   paddingBottom: '1%',
+  minHeight: '40%'
 }
 
 const svgStyle = {
@@ -35,15 +40,20 @@ const svgStyle = {
 }
 
 const StepperComponent = (props) => {
+  const { classes } = props;
   return (
-    <MuiThemeProvider theme={theme}>
       <Stepper style={stepperStyle} orientation="vertical">
         <Step completed={true} key={props.index}>
           <StepLabel 
+            className={classes.label}
             style={styleLabel} 
-            icon={props.index + 1} 
-            active={true} completed={false}>
-            {props.label}
+            icon={props.index + 1}
+            active={true} 
+            completed={false}
+          >
+            <Typography style={{fontSize: '18px'}}variant="title">
+              {props.label}
+            </Typography>
           </StepLabel>
           <StepContent completed={true} >
             {props.content ? 
@@ -54,17 +64,17 @@ const StepperComponent = (props) => {
               props.content
             }
             <Grid container direction="row">
-              <Grid item style={{ flexBasis: '45%' }}>
+              <Grid item style={{ flexBasis: '45%', paddingBottom: '2px' }}>
                 <Button
                   style={{
-                    width: '50%', 
-                    marginTop: '10px', 
+                    width: '55%',
                     color: 'white',
-                    fontSize: '10px',
+                    fontSize: '12px',
                     fontWeight: '100',
+                    backgroundColor: '#19BED8',
+                    paddingBottom: '5px',
                   }}
                   variant="contained"
-                  color="primary"
                   className="3"
                   size="small"
                 >
@@ -76,7 +86,7 @@ const StepperComponent = (props) => {
                   </div>
                 </Button>
               </Grid>
-              <Grid item style={{ flexBasis: '35%' }}>
+              <Grid item style={{ flexBasis: '35%'}}>
                 <Grid container direction="row">
                   {props.progressText.map(text => 
                     <Grid item xs={12}>
@@ -90,8 +100,7 @@ const StepperComponent = (props) => {
         </Step>
         <Step hidden={true} completed={true} key={2}/>          
       </Stepper>
-    </MuiThemeProvider>
   )
 };
-export default StepperComponent;
+export default withStyles(styles)(StepperComponent);
 
